@@ -34,7 +34,7 @@
       choco install firacode-fonts -y
 
       # Instalação do Python via Chocolatey (versão 3)
-      choco install python --version 3 -y
+      choco install python -y
 
       # Instalação do Node.js via Chocolatey
       choco install nodejs -y
@@ -59,18 +59,23 @@
       Write-Host "Baixando Repositórios do GitHub"
 
       # Criando a pasta workspace se não existir
-      New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\workspace"
+      #New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\Workspace"
 
       # Repositórios para download
-      $repos = @(
-        "https://github.com/lucasimonmendes/jarvis.git",
-        "https://github.com/lucasimonmendes/lucasimonmendes.github.io.git"
-      )
+      # $repos = @(
+      #   "https://github.com/lucasimonmendes/jarvis.git",
+      #   "https://github.com/lucasimonmendes/lucasimonmendes.github.io.git"
+      # )
+      #
+      # # Loop para baixar e mover os repositórios
+      # foreach ($repo in $repos) {
+      #    git clone $repo "$env:USERPROFILE\workspace\$((Get-Item $repo).BaseName)"
+      #   }
 
-      # Loop para baixar e mover os repositórios
-      foreach ($repo in $repos) {
-          git clone $repo "$env:USERPROFILE\workspace\$((Get-Item $repo).BaseName)"
-        }
+      # Fazendo download direto
+      git clone https://github.com/lucasimonmendes/jarvis.git $env:USERPROFILE\workspace\jarvis
+
+      git clone https://github.com/lucasimonmendes/lucasimonmendes.github.io.git $env:USERPROFILE\workspace\lucasimonmendes.github.io
     }
 
   do {
